@@ -1,5 +1,5 @@
 {
-  "name": "004",
+  "name": "polygon",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,7 @@
     "@yandex/ymaps3-default-ui-theme": "^0.0.21",
     "leaflet": "^1.9.4",
     "leaflet-draw": "^1.0.4",
+    "leaflet-search": "^4.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-leaflet": "^5.0.0",

@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Сервис "Проверка попадания адреса в полигон"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Проверяет попадание проставленной метки в нарисованный пользователем полигон.
 
-Currently, two official plugins are available:
+## Инструкция
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Проставьте метку - начните набирать адрес (например, название улицы) в строке ввода вверху карты
+2. Нарисуйте полигон - нажмите на иконку "Полигон" в правой верхней части карты. Максимальное число точек полигона - 20
+3. Отредактируйте полигон - нажмите на иконку "Редактировать" в правой верхней части карты. Передвиньте точку/точки, затем нажмите "Save".
+4. Удалите полигон - нажмите на иконку "Удалить" в правой верхней части карты, затем нажмите на "Clear all".
+4. Проверьте попадает метка в полигон или нет - нажмите кнопку "Check Address" в нижней части экрана. Сообщение о том, попала метка в полигон или нет выведется alert'ом
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Начало
 
-## Expanding the ESLint configuration
+Сборка работает на _Node.js_ version 25.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Установка
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Клонируйте репозиторий
+    ```shell
+    git clone 
+    ```
+2. Установите зависимости проекта:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    ```shell
+    npm i
+    ```
+3. Для начала работы запустите:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    ```shell
+    npm run dev
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Основные команды
+- `npm run dev` - запускает сборку с сервером для разработки проекта
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Структура проекта
+- `index.html` - файл для разметки и подключения скриптов
+- `main.tsx` - точка входа
+- `App.tsx` - корневой компонент
+- `Map.tsx` - компонент, отображайщий карту, рисующий полигон, передающий пропсы
+- `AddressSearch.tsx` - компонент для ввода адреса и установки метки
+- `CheckAddress.tsx` - компонент для проверки попадания проставленной метки в нарисованный полигон
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
