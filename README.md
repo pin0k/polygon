@@ -19,7 +19,7 @@
 
 1. Клонируйте репозиторий
     ```shell
-    git clone 
+    git clone git@github.com:pin0k/polygon.git
     ```
 2. Установите зависимости проекта:
 
